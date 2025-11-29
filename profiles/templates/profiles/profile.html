@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+<!-- White background overlay -->
+<div class="overlay"></div>
+<div class="container-fluid">
+  <!-- Profile Banner -->
+  <div class="row">
+    <div class="col-12 text-center px-0">
+      <h4 class="page_top_banner text-uppercase text-dark pt-2 mb-2">
+        MY PROFILE
+      </h4>
+    </div>
+  </div>
+</div>
+<!-- Page Container -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- Delivery, Contact Details & Username -->
+      <h4 class="text-center mt-3 text-dark text-lg-left text-center">Delivery Address & Contact Details - {{ user }}
+      </h4>
+      <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <!-- Update details button -->
+        <button class="cart-shopping-button btn rounded-0 mt-2 text-center my-auto">Update Details</button>
+      </form>
+    </div>
+  </div>
+  <hr>
+  <!-- Order history heading -->
+  <div class="row mt-3">
+    <div class="col">
+      <h4 class="text-center mt-0 text-dark text-lg-left text-center">Your Order History</h4>
+    </div>
+  </div>
+  <!-- Order Table -->
+  <div class="row">
+    <div class="col">
+      <div class="table-responsive-sm">
+        <table class="table table-sm table-bordered table-striped table-hover">
+          <thead class="text-white thead">
+            <!-- Table headers -->
+            <tr>
+              <th scope="col" class="text-uppercase text-center">Order Number:</th>
+              <th scope="col" class="text-uppercase text-center">Order Date:</th>
+              <th scope="col" class="w-50 text-uppercase text-center">Products:</th>
+              <th scope="col" class="text-uppercase text-center">Order Total:</th>
+            </tr>
+          </thead>
+          <!-- Table Body - Order history -->
+          <tbody>
+            {% for order in orders %}
+            <tr>
+              <!-- Order Number -->
+              <td class=" text-center mt-0 mb-0 pt-1">
+                <!-- Link to previous order -->
+                <a class="small py-auto" href="{% url 'order_history' order.order_number %}"
+                  title="{{ order.order_number }}">{{ order.order_number }}
+                </a>
+              </td>
+              <!-- Order Date -->
+              <td class="text-center">
+                <p class="small text-center mt-0 mb-0 pt-1">
+                  {{ order.date|truncatechars:12 }}
+                </p>
+              </td>
+              <!-- Products -->
+              <td class="text-center small">
+                <ol class="list-unstyled mt-0 mb-0 pt-1">
+                  {% for item in order.lineitems.all %}
+                  <li class="">
+                    <span class="horiz-bar">| </span>{{ item.quantity }}x {{ item.product.name }}<span class="horiz-bar"> |</span>
+                  </li>
+                  {% endfor %}
+                </ol>
+              </td>
+              <!-- Total Order Cost -->
+              <td class="text-center my-auto">
+                <p class="small mt-0 mb-0 pt-1">
+                  €{{ order.grand_total }}
+                </p>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

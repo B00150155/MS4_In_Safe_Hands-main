@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- White background overlay -->
+<div class="overlay"></div>
+
+<!-- Contact us page banner -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col text-center my-auto px-0">
+      <h4 class="page_top_banner text-uppercase text-dark pt-2 mb-2">CONTACT US
+      </h4>
+    </div>
+  </div>
+</div>
+<!-- Page container -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <!-- Warehouse and contact details text -->
+      <h4 class="text-center mt-2 mb-3">
+        Our contact details and warehouse address are listed below.
+      </h4>
+    </div>
+  </div>
+  <!-- Google Map -->
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <iframe class="iframe"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4844.3507118967955!2d-7.371008548659523!3d53.51621451444331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485dc07411443699%3A0x70ab80bc4a61c1ce!2sFarranfolliott%2C%20Mullingar%2C%20Co.%20Westmeath%2C%20N91%20E1WD!5e0!3m2!1sen!2sie!4v1633184631070!5m2!1sen!2sie"
+        allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <!-- Address details -->
+    <div class="col-12 col-md-6 text-md-left text-center">
+      <h4 class="mt-3 mt-md-0">Warehouse Address</h4>
+      <p class="mb-1">In Safe Hands</p>
+      <p class="mb-1">Forrest Park Central</p>
+      <p class="mb-1">Mullingar Business Park</p>
+      <p class="mb-1">Mullingar</p>
+      <p class="mb-1">County Westmeath</p>
+      <p class="mb-1">N91 E1WD</p>
+      <p class="mb-1">Ireland</p>
+      <hr>
+      <!-- Contact Details -->
+      <h4 class="mt-3">Contact us</h4>
+      <!-- Phone Number -->
+      <p class="mb-2"><i class="fas fa-phone-volume"></i> +353 44 93 11111</p>
+      <!-- Info email -->
+      <p class="mb-0 mt-0">
+        <i class="fas fa-envelope"></i>
+        <a id="info-email" class="ftr-p" href="mailto:info@insafehands.ie">info@safehands.ie</a>
+        <span>- General enquiries</span>
+      </p>
+      <!-- Sales email -->
+      <p class="mb-0 mt-0">
+        <i class="fas fa-envelope"></i>
+        <a id="sales-email" class="ftr-p" href="mailto:info@insafehands.ie">sales@safehands.ie</a>
+        <span>- Sales enquiries</span>
+      </p>
+    </div>
+  </div>
+</div>
+<!-- Registered users priority message -->
+{% if user.is_authenticated %}
+<!-- Horizontal Line -->
+<hr>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col text-center my-auto px-0">
+      <h4 class="page_top_banner text-uppercase text-dark pt-2 mb-2">Registered Users Priority Messages
+      </h4>
+    </div>
+  </div>
+</div>
+<!-- Message form container -->
+<div class="container">
+  <div class="row text-center">
+    <div class="col">
+      <p class="text-left mt-2 mb-2 text-danger">The form below is our registered users priority message form. Messages and queries sent to us via this form will receive a priority response over all other incoming communication.
+      </p>
+      <!-- Registered users contact form -->
+      <form action="{% url 'contact_us' %}" class="form text-center" method="POST">
+        {% csrf_token %}
+        <div class="reg-users-contact-form-div">
+          <!-- Message from field - None editable, username is auto generated to current logged in user -->
+          <p class="text-left mb-2 mt-2 user-input-p text-muted">
+            Message From:
+            <input disabled="disabled" class="user-input-display" type="text" value="{{ user }}" readonly>
+          </p>
+          <!-- Crispy form - Subject, message & email -->
+          <p class="small mb-0 text-left">required *</p>
+          {{ form|crispy }}
+        </div>
+        <!-- Send message button -->
+        <button class="btn cart-shopping-button rounded-0" type="submit"><i class="fas fa-envelope"></i> Send
+          Message</button>
+      </form>
+    </div>
+  </div>
+  <!-- Line breaks for some space -->
+  <br>
+  <br>
+</div>
+{% else %}
+<!-- Horizontal line -->
+<hr>
+<!-- Registered user priority messaging service -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2 class="text-center">Registered Users Messaging Service</h2>
+      <p class="text-center mb-0">
+        Registered users on our site have access to our priority messaging service that can be found on this page. If
+        you would like to avail of our priority messaging service you can do so by clicking on the sign up button below. Priority messages sent via this page will receive priority over incoming messages sent via other means. Registration is free and only takes 1 minute. Once you're registered just come back to this page and you will see the message form here. If you're already registered you can just click on the login button and come back to this page. 
+      </p>
+      <div class="row text-center">
+        <div class="col">
+          <a class="btn rounded-0 cart-shopping-button mt-2 mt-md-2 text-center" href="{% url 'account_signup' %}">Sign
+            Up Here</a>
+          <a class="btn rounded-0 cart-shopping-button mt-2 mt-md-2 text-center" href="{% url 'account_login' %}">Log In</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+{% endif %}
+{% endblock %}

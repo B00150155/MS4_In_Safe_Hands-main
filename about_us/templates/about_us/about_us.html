@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- White background overlay -->
+<div class="overlay"></div>
+<!-- About us page banner -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col text-center my-auto px-0">
+      <h4 class="page_top_banner text-uppercase text-dark pt-2 mb-2">About Us
+      </h4>
+    </div>
+  </div>
+</div>
+<!-- About Us image & text -->
+<div class="container-fluid my-3">
+  <div class="row">
+    <!-- Image of doctors -->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+      <!-- <img class="img-fluid" src="/media/about_us/about_us.jpg" alt=""> -->
+      <img class="img-fluid" src="{{ MEDIA_URL }}about_us/about_us.jpg" alt="Image of 2 medial workers">
+    </div>
+    <!-- About us header and text -->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-lg-left text-center">
+      <h2 class="text-dark text-uppercase text-center mb-0 mt-3 mt-md-3 mt-lg-0 px-2">About Us</h2>
+      <p class="px-2 mt-1">
+        In Safe Hands is an independent Irish healthcare company based in Mullingar, County Westmeath, Ireland. Our mission is to enable all our customers to protect the health and wellbeing of themselves and their loved ones by providing them with easy access to high quality, effective PPE equipment to help keep them safe during the Covid-19 pandemic. We strive to offer our customers the best protection we can one product at a time.
+      </p>
+    </div>
+  </div>
+</div>
+<br>
+{% endblock %}

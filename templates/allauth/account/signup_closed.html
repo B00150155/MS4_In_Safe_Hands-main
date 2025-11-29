@@ -1,0 +1,24 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
+
+{% block inner_content %}
+<!-- White background overlay -->
+<div class="overlay"></div>
+<div class="container-fluid">
+    <!-- Sign up Closed Banner -->
+    <div class="row">
+        <div class="col text-center my-auto px-0">
+            <h4 class="page_top_banner text-uppercase text-dark pt-2 mb-2">SIGN UP CLOSED</h4>
+        </div>
+    </div>
+</div>
+<!-- Page container -->
+<div class="container">
+  <h2>{% trans "Sign Up Closed" %}</h2>
+  
+  <p class="">{% trans "We are sorry, but the sign up is currently closed." %}</p>
+</div>
+{% endblock %}

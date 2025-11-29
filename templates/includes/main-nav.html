@@ -1,0 +1,55 @@
+<div class="collapse navbar-collapse" id="main-nav">
+  <ul class="navbar-nav w-auto mx-auto">
+
+    <!-- Shop PPE-->
+    <li class="nav-item dropdown">
+      <hr class="d-bloc d-lg-none">
+      <a class="text-uppercase  nav-link text-dark mr-5" href="#" id="shop-link" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Shop PPE<i class="fas fa-caret-down my-auto pl-2"></i>
+      </a>
+      <!-- Dropdown of categories of products -->
+      <div class="dropdown-menu border-0" aria-labelledby="shop-link">
+        <a href="{% url 'products' %}" class="dropdown-item">All PPE Products</a>
+        <a href="{% url 'products' %}?category=masks" class="dropdown-item">Masks</a>
+        <a href="{% url 'products' %}?category=covid_testing" class="dropdown-item ">Covid Testing</a>
+        <a href="{% url 'products' %}?category=hygiene" class="dropdown-item ">Hygiene</a>
+        <a href="{% url 'products' %}?category=wearable_ppe" class="dropdown-item">Wearable PPE</a>
+      </div>
+    </li>
+
+    <!-- About -->
+    <li class="nav-item dropdown">
+      <a class="text-uppercase nav-link text-dark mr-5" href="" id="about-link" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        About<i class="fas fa-caret-down my-auto pl-2"></i>
+      </a>
+      <div class="dropdown-menu border-0" aria-labelledby="about-link">
+        <a href="{% url 'about_us' %}" class="dropdown-item">About Us</a>
+      </div>
+    </li>
+
+    <!-- Covid Info -->
+    <li class="nav-item dropdown">
+      <a class="text-uppercase nav-link text-dark mr-5" href="#" id="covid-info-link"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Covid Info<i class="fas fa-caret-down my-auto pl-2"></i>
+      </a>
+      <div class="dropdown-menu border-0" aria-labelledby="covid-info-link">
+        <a href="{% url 'covid_numbers' %}" class="dropdown-item">Covid Numbers</a>
+      </div>
+    </li>
+
+    <!-- Contact Us -->
+    <li class="nav-item dropdown">
+      <a class="text-uppercase nav-link text-dark mr-5" href="#" id="contact-us-link"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Contact Us<i class="fas fa-caret-down my-auto pl-2"></i>
+      </a>
+      <div class="dropdown-menu border-0" aria-labelledby="contact-us-link">
+        <a href="{% url 'contact_us' %}" class="dropdown-item">Contact Us</a>
+      </div>
+    </li>
+
+  </ul>
+</div>

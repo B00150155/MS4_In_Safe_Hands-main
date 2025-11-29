@@ -1,0 +1,192 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+  {% block meta %}
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  {% endblock %}
+
+  {% block extra_meta %}
+  {% endblock %}
+
+  {% block corecss %}
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'favicon.ico' %}">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300&display=swap" rel="stylesheet">
+  <!-- My CSS -->
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  {% endblock %}
+  
+  {% block extra_css %}
+  {% endblock %}
+  <title>In Safe Hands{% block extra_title %}{% endblock %}</title>
+</head>
+
+<body>
+  <!-- Free deliver banner -->
+  <div class="container-fluid">
+    <div class="row text-center free_delivery_row">
+      <div class="col">
+        <h4 class="free_delivery_text my-2"><i class="fas fa-truck fs-4 mx-2"></i>Free delivery on
+          all orders over €{{ free_delivery_threshold }}
+        </h4>
+      </div>
+    </div>
+  </div>
+  <!-- <header class="container-fluid fixed-top"> -->
+  <header class="container-fluid">
+    <div id="topnav" class="row bg-white d-none d-lg-flex">
+      <!-- Logo/Brand Name -->
+      <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+        <a href="{% url 'home' %}" class="nav-link main-logo-link">
+          <h4 class="text-dark mb-0 mt-1">
+            In Safe Hands
+          </h4>
+        </a>
+      </div>
+      <!-- Search Bar -->
+      <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+        <form method="GET" action="{% url 'products' %}">
+          <div class="input-group w-100">
+            <input class="form-control border rounded-0 search-bar" type="text" name="q"
+              placeholder="Im looking for....">
+            <div class="input-group-append">
+              <button class="form-control btn search-icon rounded-0" type="submit">
+                <span class="icon">
+                  <i class="fas fa-search"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Account & shopping bag -->
+      <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+        <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+          <!-- My Account -->
+          <li class="list-inline-item dropdown">
+            <a class="text-dark nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <div class="text-center">
+                <div><i class="fas fa-user-md fa-lg  text-dark"></i></div>
+                <p class="my-0 text-dark">My Account<i
+                    class="fas fa-caret-down my-auto pl-2  text-dark"></i></p>
+              </div>
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+              {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+              <a class="dropdown-item text-dark" href="{% url 'add_product' %}">Add Product</a>
+              {% endif %}
+              <a class="dropdown-item text-dark" href="{% url 'profile' %}">My Profile</a>
+              <a class="dropdown-item text-dark" href="{% url 'account_logout' %}">Logout</a>
+              {% else %}
+              <a class="dropdown-item text-dark" href="{% url 'account_signup' %}">Register</a>
+              <a class="dropdown-item text-dark" href="{% url 'account_login' %}">Login</a>
+              {% endif %}
+            </div>
+          </li>
+          <!-- Shopping Cart -->
+          <li class="list-inline-item">
+            <!-- If items in cart then cart will display red -->
+            <a class="{% if grand_total %}text-danger {% else %}text-dark{% endif %} nav-link"
+              href="{% url 'view_cart' %}">
+              <div class="text-center">
+                <div class="">
+                  <i class="fas fa-shopping-cart fa-lg"></i>
+                </div>
+                <p class="my-0">
+                  {% if grand_total %}
+                  €{{ grand_total|floatformat:2 }}
+                  {% else %}
+                  €0.00
+                  {% endif %}
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Site navigation -->
+    <div class="row bg-white">
+      <nav class="navbar navbar-expand-lg navbar-light w-100">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+          aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        {% include 'includes/mobile-top-header.html' %}
+        {% include 'includes/main-nav.html' %}
+      </nav>
+    </div>
+  </header>
+
+  {% if messages %}
+  <div class="message-container">
+    {% for message in messages %}
+    {% with message.level as level %}
+    {% if level == 40 %}
+    <!-- Error message  -->
+    {% include 'includes/toasts/toast_error.html' %}
+    {% elif level == 30 %}
+    <!-- Warning message -->
+    {% include 'includes/toasts/toast_warning.html' %}
+    {% elif level == 25 %}
+    <!-- Success message -->
+    {% include 'includes/toasts/toast_success.html' %}
+    {% else %}
+    <!-- Info message -->
+    {% include 'includes/toasts/toast_info.html' %}
+    {% endif %}
+    {% endwith %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% block page_header %}
+  {% endblock %}
+
+  {% block content %}
+  {% endblock %}
+
+  {% block corejs %}
+  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+  </script>
+  <!-- Stripe JS link -->
+  <script src="https://js.stripe.com/v3/"></script>
+  {% endblock %}
+  {% block extra_js %}
+  {% endblock %}
+  {% block postload_js %}
+  <!-- Toast JS code below taken from Bootstrap documents - https://getbootstrap.com/docs/4.3/components/toasts/ -->
+  <script>
+    $(document).ready(function () {
+      $('.toast').toast({
+        delay: 4000
+      });
+      $('.toast').toast('show');
+    });
+  </script>
+  {% endblock %}
+</body>
+</html>

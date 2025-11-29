@@ -1,0 +1,276 @@
+/* Global */
+
+html {
+  height: 100%;
+}
+
+body {
+  background: url(/media/homepage/doctor5.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: calc(100vh - 164px);
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/* Overlay to create a white background on desired pages */
+.overlay {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: #fff;
+  z-index: -1;
+}
+
+/* Banner at top of pages describing page user is on */
+.page_top_banner {
+  background-color: #1fb4ff !important;
+  color: #fff !important;
+  border: 1px solid #c3c1c1;
+}
+
+/* Free delivery row */
+.free_delivery_row{
+  background-color: #1fb4ff;
+  color: #fff;
+}
+
+/* Top Header Search Bar*/
+.search-bar {
+  border: 1px solid #1fb4ff !important;
+}
+
+.search-icon {
+  background-color: #1fb4ff;
+  border: 1px solid #1fb4ff !important;
+  color: #fff;
+}
+
+.search-icon:hover {
+  background-color: #fff;
+  color: #1fb4ff;
+  border: 1px solid #1fb4ff;
+}
+
+/* Toasts */
+.message-container {
+  position: fixed;
+  top: 43px;
+  /* top: 72px; */
+  /* right: 0; */
+  right: 0px;
+  z-index: 9999;
+  border: 1px solid #1fb4ff;
+}
+
+.dot-success {
+  height: 15px;
+  width: 15px;
+  background-color: #5cb85c;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-info {
+  height: 15px;
+  width: 15px;
+  background-color: #5bc0de;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-error {
+  height: 15px;
+  width: 15px;
+  background-color: #ffc107;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-danger {
+  height: 15px;
+  width: 15px;
+  background-color: #dc3545;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Homepage Testimonials */
+.testimonial {
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: #555;
+  color: #fff;
+  opacity: 0.6;
+}
+
+.testimonials-row {
+  margin-bottom: 50px;
+}
+
+.testimonial-image {
+  border-radius: 50%;
+  max-width: 40px;
+} 
+
+.list-group-item, .card {
+  border: 0px solid #fff;
+}
+
+.indicator:hover {
+  cursor: default !important;
+}
+
+/* Products Page */
+.horiz-bar {
+  color: #1fb4ff !important;
+}
+
+/* Reviews scroll box */
+.review-scroll {
+  overflow-y: scroll;
+  height: 150px;
+}
+
+/* Star rating icon */
+.fa-star-half-alt:before {
+  color: #1fb4ff !important;
+}
+
+
+.fa-qrcode:before {
+  color: #1fb4ff !important;
+}
+
+/* Wishlist heart icon colour */
+/* .fa-heart:before {
+  color: #1fb4ff;
+} */
+
+/* Shopping Cart Page */
+.cart-shopping-button {
+  background-color: #1fb4ff !important;
+  color: #fff !important;
+  border: 1px solid #c3c1c1;
+}
+
+.cart-shopping-button:hover {
+  background-color: #fff !important;
+  color: #1fb4ff !important;
+  border: 1px solid #1fb4ff;
+}
+
+.thead {
+  background-color: #1fb4ff;
+  border: 1px solid #1fb4ff;
+}
+
+.bag-notification-wrapper {
+  max-height: 100px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Checkout page */
+.form-control {
+  border-radius: 0px;
+  border: 1px solid #c3c1c1;
+}
+
+#processing-overlay {
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 9999;
+}
+
+.processing-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  margin-top: 10%;
+}
+
+.update-button {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+}
+
+/* Add/Edit Product Page */
+.custom-checkbox .custom-control-label::before {
+  border-radius: 0;
+  border-color: #dc3545;
+  cursor: pointer;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  border-radius: 0;
+  cursor: pointer !important;
+}
+
+.custom-control-label::after {
+  cursor: pointer;
+}
+
+/* Contact Us Page */
+.user-input-display {
+  border: none !important;
+}
+
+.user-input-p {
+  padding-left: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border: 1px solid #c3c1c1;
+}
+
+/* Contact Us Page - Google map */
+.iframe {
+  height: 380px;
+  width: 100%;
+  border: 0px;
+}
+
+/* Contact Us Priority Message Form */
+.user-input-display {
+  background: transparent;
+}
+
+/* Media querires to resolve the icons being to large for mobile devices. */
+@media (max-width: 380px) {
+  .p-search {
+    font-size: 0.8rem;
+  }
+  .fa-search:before{
+    font-size: 0.8rem;
+  }
+  .p-my-account {
+    font-size: 0.8rem;   
+  }
+  .fa-user-md:before {
+    font-size: 0.8rem;   
+  }
+  .p-cart-total {
+    font-size: 0.8rem;   
+  }
+  .fa-shopping-cart:before {
+    font-size: 0.8rem;   
+  }
+  .search-a-tag {
+    padding: 0px !important;
+  }
+  .my-account-a-tag {
+    padding: 0px !important;
+  }
+  .shopping-cart-a-tag {
+    padding: 0px !important;
+  }
+}

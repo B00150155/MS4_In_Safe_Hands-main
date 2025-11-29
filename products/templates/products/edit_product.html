@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+<!-- White background overlay -->
+<div class="overlay"></div>
+<div class="container-fluid">
+  <!-- Add Product Banner -->
+  <div class="row">
+    <div class="col-12 text-center px-0">
+      <h4 class="page_top_banner text-uppercase text-dark pt-2 mb-2">
+        PRODUCT MANAGEMENT
+      </h4>
+    </div>
+  </div>
+</div>
+<!-- Page container -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- Add product header -->
+      <h2 class="text-lg-left text-center mt-3 mb-1">Edit A Product</h2>
+      <h4 class="text-lg-left text-center mb-3">You are now editing {{ product.name }}</h4>
+      <!-- Product Input Form -->
+      <form method="POST" action="{% url 'edit_product' product.id %}" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- The loop below will remove the default images label so its not repeated twice -->
+        {% for field in form %}
+        {% if field.name != 'image' %}
+        {{ field|as_crispy_field }}
+        {% else %}
+        {{ field }}
+        {% endif %}
+        {% endfor %}
+        <!-- Cancel Adding Product Button -->
+        <a class="btn cart-shopping-button rounded-0" href="{% url 'products' %}">Cancel</a>
+        <!-- Add product button -->
+        <button class="btn cart-shopping-button rounded-0" type="submit">Save Edited Details</button>
+      </form>
+      <br>
+    </div>
+  </div>
+</div>
+<br>
+{% endblock %}

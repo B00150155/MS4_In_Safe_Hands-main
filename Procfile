@@ -1,0 +1,1 @@
+web: gunicorn In_Safe_Hands.wsgi:application

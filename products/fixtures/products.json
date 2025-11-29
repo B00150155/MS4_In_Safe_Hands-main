@@ -1,0 +1,155 @@
+[{
+    "pk": 1,
+    "model": "products.product",
+    "fields": {
+      "p_id": "ppe00001",
+      "name": "N95 Mask (Pack of 10)",
+      "description": "This N95 mask is a respirator mask (FFP2 form) which helps prevent viruses from entering through the mucous membranes of the mouth and nostrils. These unique face masks have been specifically designed for the public to use in a flu outbreak such as the current COVID-19 pandemic.",
+      "price": 45.00,
+      "category": 1,
+      "rating": 4.9,
+      "image_url": "https://ibb.co/dfhFVrF",
+      "image": "n95_green.png"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "products.product",
+    "fields": {
+      "p_id": "ppe00003",
+      "name": "KN95 Mask (Pack of 10)",
+      "description": "KN95 is the regulatory standard for filtering face piece respirators that are certified in China. KN95 masks provide 95% protection against all particles that are greater than 0.3 µm in diameter (bacteria, viruses, pollution particles, fine particles, dust, smog, pollen, etc.) Currently approved by the WHO as a safety measure from COVID-19; used by health care providers, patients, and citizens.",
+      "price": 40.00,
+      "category": 1,
+      "rating": 4.5,
+      "image_url": "https://ibb.co/Tg53tXV",
+      "image": "kn95.png"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "products.product",
+    "fields": {
+      "p_id": "ppe00005",
+      "name": "Surgical masks (Pack of 50)",
+      "description": "These superior 3-Ply disposable surgical masks are designed to offer the wearer and those around them an extra layer of protection while in public. These face masks can reduce the number of droplets released from the wearer into the air, which can protect others. Unlike N95 and KN95 masks these surgical masks must be changed after 2 to 5 hours max of usage, beyond this point they lose their protective functionality.",
+      "price": 25.00,
+      "category": 1,
+      "rating": 4.0,
+      "image_url": "https://ibb.co/ZWcSLHC",
+      "image": "surgical_mask.png"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "products.product",
+    "fields": {
+      "p_id": "ppe00006",
+      "name": "Face shield",
+      "description": "These face shields are an effective way to protect the wearer against airborne droplets and splashes of liquid that may be projected from a cough or a sneeze. They do not however offer any protection from airborne practicals and ideally should be worn in tandem with a face mask for the best level of protection.",
+      "price": 17.00,
+      "category": 1,
+      "rating": 3.5,
+      "image_url": "https://ibb.co/C52VqLH",
+      "image": "face_shield.png"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "products.product",
+    "fields": {
+      "p_id": "ppe00007",
+      "name": "Covid-19 Rapid antigen test - Single use",
+      "description": "A simple way of detecting if you have the SARS-CoV-2 (Covid-19) virus. The sample does not need to go to the lab - get your results in the comfort of your own home in 15 minutes. One test per pack. This test is 98.% accurate.",
+      "price": 7.95,
+      "category": 2,
+      "rating": 4.4,
+      "image_url": "https://ibb.co/WKnWVHm",
+      "image": "antigen_test.png"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "products.product",
+    "fields": {
+      "p_id": "ppe00008",
+      "name": "Covid-19 PCR home test - Single use",
+      "description": "This Covid-19 PCR home test requires a combined nose/throat swab sample to be collected and sent back to an accredited laboratory for testing. If you require your results within a specific time frame, our priority service guarantees results within 24 hours of your sample’s arrival at the laboratory.",
+      "price": 165.00,
+      "category": 2,
+      "rating": 4.9,
+      "image_url": "https://ibb.co/C77SHZM",
+      "image": "rapid_pcr.png"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "products.product",
+    "fields": {
+      "p_id": "ppe00009",
+      "name": "Infrared thermometer",
+      "description": "When you need to obtain fast results on a persons temperature, this infrared non contact thermometer is ideal. By being non-contact it is safer for the user to protect them from the spread of Covid-19. The temperature is shown via the LCD display which shows if the person has a normal temperature, a yellow back a slight fever, or a high fever.",
+      "price": 57.99,
+      "category": 2,
+      "rating": 4.9,
+      "image_url": "https://ibb.co/jLrZFjd",
+      "image": "infrared_thermometer.png"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "products.product",
+    "fields": {
+      "p_id": "ppe000010",
+      "name": "Examination gloves - 50 pairs",
+      "description": "Our powder free nitrile examination gloves strike the perfect balance between great protection, comfort and tactile sensitivity. Fingertip textured to provide enhanced grip while you work and tested to offer strong pressure and tear resistance.",
+      "price": 10.95,
+      "category": 3,
+      "rating": 4.9,
+      "image_url": "https://ibb.co/Wkg0CRT",
+      "image": "rubber_gloves.png"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "products.product",
+    "fields": {
+      "p_id": "ppe000011",
+      "name": "Disposable isolation gown - 100 pack",
+      "description": "These single use gowns are ideal to offer a full length protective barrier to the users cloths in close contact situations",
+      "price": 139.99,
+      "category": 3,
+      "rating": 4.00,
+      "image_url": "https://ibb.co/C7z00Qk",
+      "image": "disposable_gown.png"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "products.product",
+    "fields": {
+      "p_id": "ppe000012",
+      "name": "Hand Sanitizer - 250ml",
+      "description": "70% alcohol based hand sanitizing Liquid 250ml Pump Bottle - suitable for both personal and commercial use and in all facilities and premises to prevent the spread of Covid-19 virus and bacteria. Specially formulated to be gentle on hands and quick drying.",
+      "price": 2.99,
+      "category": 4,
+      "rating": 4.5,
+      "image_url": "https://ibb.co/G2DMyhz",
+      "image": "sanitizer.png"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "products.product",
+    "fields": {
+      "p_id": "ppe000013",
+      "name": "Hand and surface wipes - Pack of 1000",
+      "description": "These individually wrapped 75% alcohol wipes are ideal for disinfecting both hands and surfaces. The quick drying formulation means they are also great for wiping down phones, hand held devices, PCs and desks. Ideal for people to carry on the move.",
+      "price": 54.99,
+      "category": 4,
+      "rating": 4.3,
+      "image_url": "https://ibb.co/dMxJrhK",
+      "image": "alcohol_wipes.png"
+    }
+  }
+]

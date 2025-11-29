@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- White background overlay -->
+<div class="overlay"></div>
+<!-- Main page container -->
+<div class="container-fluid">
+  <!-- PPE Products Banner -->
+  <div class="row">
+    <div class="col text-center my-auto px-0">
+      <h4 class="page_top_banner text-uppercase text-dark pt-2 mb-2">PPE Products
+      </h4>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Number of products available on products page or number of products available after a search -->
+    <div class="col-10 offset-1">
+      <p class="text-muted my-2 ml-2 text-center text-md-left">
+        <!-- If user searches using a search term or via a category the loop below will run -->
+        {% if search_term or current_categories or current_sorting != 'None_None' %}
+        <span class=""><a href="{% url 'products' %}">All Products</a> | </span>
+        {% endif %}
+        {{ products|length }} Products{% if search_term %} found for "{{ search_term }}"{% endif %}
+      </p>
+    </div>
+  </div>
+  <!-- All Products Cards -->
+  <div class="col-10 offset-1">
+    <hr class="mt-1">
+    <div class="row">
+      <!-- Products for loop -->
+      {% for product in products %}
+      <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+        <div class="card">
+          <!-- Card Images -->
+          {% if product.image %}
+          <a href="{% url 'product_details' product.id %}">
+            <img src="{{ product.image.url}}" class="card-img-top img-fluid" alt="{{ product.name }}"
+              style="height: 280px;">
+          </a>
+          {% else %}
+          <a href="{% url 'product_details' product.id %}">
+            <img src="{{ MEDIA_URL }}no_photo/no-photo.png" class="card-img-top img-fluid" alt="{{ product.name }}"
+              style="height: 280px;">
+          </a>
+          {% endif %}
+          <!-- Product Name (Header)-->
+          <div class="card-body px-0 py-0">
+            <h6 class="card-title mb-0 mt-1 text-center text-dark"><span class="horiz-bar">|</span>
+              {{ product.name }} <span class="horiz-bar">|</span></h6>
+          </div>
+          <!-- Product Details -->
+          <ul class="list-group list-group-flush">
+            <!-- Product Price -->
+            <li class="list-group-item px-0 py-0 text-center text-dark"><span class="horiz-bar">|</span> Price:
+              €{{ product.price }}<span class="horiz-bar"> |</span></li>
+            <!-- Product Protection Rating -->
+            {% if product.rating %}
+            <li class="list-group-item px-0 py-0 text-center text-dark"><span class="horiz-bar">|</span> Protection
+              Level: &nbsp;<i class="fas fa-star-half-alt text-dark"></i>&nbsp;{{ product.rating }} / 5 <span
+                class="horiz-bar">|</span></li>
+            {% else %}
+            <li class="list-group-item px-0 py-0 text-center text-dark">Not rated yet</li>
+            {% endif %}
+            <!-- Product Category If Loop-->
+            {% if product.category %}
+            <li class="list-group-item text-center text-dark mb-0 px-0 py-0"><span class="horiz-bar">|</span><span class="text-dark">
+                Category:</span>
+              <a class="text-dark text-decoration-none"
+                href="{% url 'products' %}?category={{ product.category.name }}">
+                <i class="fas fa-qrcode"></i> {{ product.category.friendly_name }}
+              </a>
+              <span class="horiz-bar">|</span></li>
+            {% endif %}
+            {% if request.user.is_superuser %}
+            <li class="list-group-item text-center mt-1 px-0 py-0">
+              <a class="text-decoration-none" href="{% url 'edit_product' product.id %}">Edit |</a>
+              <a onclick="return confirm('Sure you want to delete?')" class="text-decoration-none text-danger"
+                href="{% url 'delete_product' product.id %}">Delete</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+      <!-- Dynamic horizontal line that adjusts to all screen sizes -->
+      <!-- This for loop counter divisibleby code below was taken from the Boutique ado tutorial video -->
+      {% if forloop.counter|divisibleby:1 %}
+      <div class="col-12 d-sm-none mb-3 mt-3">
+        <hr>
+      </div>
+      {% endif %}
+      {% if forloop.counter|divisibleby:2 %}
+      <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-3 mt-3">
+        <hr>
+      </div>
+      {% endif %}
+      {% if forloop.counter|divisibleby:3 %}
+      <div class="col-12 d-none d-lg-block d-xl-none mb-3 mt-3">
+        <hr>
+      </div>
+      {% endif %}
+      {% if forloop.counter|divisibleby:4 %}
+      <div class="col-12 d-none d-xl-block mb-3 mt-3">
+        <hr>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<br>
+<br>
+{% endblock %}

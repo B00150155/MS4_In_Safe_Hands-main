@@ -1,0 +1,42 @@
+{% if widget.is_initial %}
+<!-- Image & current image text -->
+<div class="row">
+  <div class="col">
+
+    <p class="mb-0">{{ widget.initial_text }}:</p>
+    <a href="{{ widget.value.url }}">
+      <img src="{{ widget.value.url }}" width="150" height="150" class="rounded-0" alt="">
+    </a>
+
+  </div>
+</div>
+{% if not widget.required %}
+<!-- Delete this image checkbox and text -->
+<div class="row mb-2">
+  <div class="col">
+    <div class="custom-control custom-checkbox mt-1">
+      <input class="custom-control-input" type="checkbox" name="{{ widget.checkbox_name }}"
+        id="{{ widget.checkbox_id }}">
+      <label class="custom-control-label text-danger pt-1"
+        for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
+    </div>
+  </div>
+</div>
+{% endif %}
+{{ widget.input_text }}
+{% endif %}
+<!-- Select Image & Choose File -->
+<div class="row">
+  <div class="col">
+    <p class="mb-0">Select Image:</p>
+
+    <button class="btn rounded-0 px-0 py-0 mb-0">
+    <input class="" id="new-image" type="{{ widget.type }}" name="{{ widget.name }}"
+      {% include "django/forms/widgets/attrs.html" %}>
+    </button>
+
+  </div>
+</div>
+<strong>
+  <p class="text-danger" id="filename"></p>
+</strong>

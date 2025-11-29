@@ -1,0 +1,1 @@
+In Safe Hands Confirmation for Order Number {{ order.order_number }}

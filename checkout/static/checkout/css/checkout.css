@@ -1,0 +1,10 @@
+.payment-form .form-control,
+#card-element {
+    color: #000;
+    border: 1px solid #c3c1c1;
+    padding-top: 9px;
+    padding-bottom: 6px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family: 'Josefin Sans', sans-serif;
+  }

@@ -161,6 +161,10 @@ def delete_product(request, product_id):
         messages.warning(request, 'Sorry, you are not authorized to perform \
                                    that action')
         return redirect(reverse('home'))
+    
+    if request.method != 'POST':
+        messages.error(request, 'Invalid request method.')
+        return redirect(reverse('products'))
 
     product = get_object_or_404(Product, pk=product_id)
     product.delete()

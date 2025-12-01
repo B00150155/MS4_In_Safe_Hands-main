@@ -76,8 +76,13 @@
             {% if request.user.is_superuser %}
             <li class="list-group-item text-center mt-1 px-0 py-0">
               <a class="text-decoration-none" href="{% url 'edit_product' product.id %}">Edit |</a>
-              <a onclick="return confirm('Sure you want to delete?')" class="text-decoration-none text-danger"
-                href="{% url 'delete_product' product.id %}">Delete</a>
+              <form action="{% url 'delete_product' product.id %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit"
+                    onclick="return confirm('Are you sure?')" class="btn btn-link p-0 m-0 text-danger text-decoration-none">
+                  Delete
+                </button>
+              </form>
             </li>
             {% endif %}
           </ul>

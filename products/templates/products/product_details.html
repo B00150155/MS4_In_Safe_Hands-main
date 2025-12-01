@@ -64,8 +64,12 @@
         <p class="text-center text-md-left mt-1">
           <span class="horiz-bar">| </span><span>Admin:</span><a class="text-decoration-none"
             href="{% url 'edit_product' product.id %}"> Edit |</a>
-          <a onclick="return confirm('Sure you want to delete?')" class="text-decoration-none text-danger"
-            href="{% url 'delete_product' product.id %}">Delete <span class="horiz-bar"> |</span></a>
+          <form action="{% url 'delete_product' product.id %}" method="POST" style="display:inline;">
+            {% csrf_token %}
+            <button onclick="return confirm('Are you sure?')" class="text-danger btn btn-link p-0 m-0">
+              Delete
+            </button>
+          </form>
         </p>
         {% endif %}
         <!-- Horizontal Line -->

@@ -19,6 +19,7 @@
 ## Python Commands to run in venv
 * python manage.py makemigrations --dry-run
 * Then run the command python manage.py migrate --plan
+* If the makemigrations and migrate commands fail, omit the --dry-run and --plan flags from each of the commands
 * If there are no issues run the command python manage.py migrate
 * You will also need ot create a superuser for your project, this can be done by running the command python manage.py createsuperuser
 * Finally to run the project in terminal type python manage.py runserver

@@ -11,12 +11,12 @@ venv\Scripts\activate.bat if in command prompt
 install -r requirements.txt
 
 -Key Commands
-  -setx STRIPE_PUBLIC_KEY "pk_test_51SXLcRCcV8C4s5XqlZYuVF1OYIbobJSzNMR9elI0m1P1gGa1b62NRpuwqZ2iCgRnH9WfhjinOL42wOzopERkmjJZ00SA6BCQqQ"
-  -setx STRIPE_SECRET_KEY "sk_test_51SXLcRCcV8C4s5Xqo54y7qgoYo0L1tczSt5SDHWChjf1sc3TBVNQfPbYkLan41G9rp4ZMPjoBuryh9ZOwF8ndlNq00AltRRB9t"
-  -setx STRIPE_WH_SECRET "wh_test_fake_webhook_key"
-  -setx IN_DEVELOPMENT "True"
-  -setx DJANGO_SECRET_KEY "test-secret-key"
-  -setx SECRET_KEY "test-secret-key1"
+  * setx STRIPE_PUBLIC_KEY "pk_test_51SXLcRCcV8C4s5XqlZYuVF1OYIbobJSzNMR9elI0m1P1gGa1b62NRpuwqZ2iCgRnH9WfhjinOL42wOzopERkmjJZ00SA6BCQqQ"
+  * setx STRIPE_SECRET_KEY "sk_test_51SXLcRCcV8C4s5Xqo54y7qgoYo0L1tczSt5SDHWChjf1sc3TBVNQfPbYkLan41G9rp4ZMPjoBuryh9ZOwF8ndlNq00AltRRB9t"
+  * setx STRIPE_WH_SECRET "wh_test_fake_webhook_key"
+  * setx IN_DEVELOPMENT "True"
+  * setx DJANGO_SECRET_KEY "test-secret-key"
+  * setx SECRET_KEY "test-secret-key1"
 
 
 python manage.py makemigrations --dry-run
